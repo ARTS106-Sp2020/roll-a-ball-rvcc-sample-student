@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     //variables for counting and displaying count
     private int count;
     public Text countTextUI;
+    public Text winTextUI;
 
 
 
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         count = 0;
         SetUIText();
+        winTextUI.text = "";
     }
 
 
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             SetUIText();
+
         }
     }
 
@@ -51,6 +54,12 @@ public class PlayerController : MonoBehaviour
     private void SetUIText()
     {
         countTextUI.text = "Count: " + count.ToString();
+
+        if (count >= 12)  // if I have more or fewer pickups, change value
+        {
+            winTextUI.text = "YOU WIN!!!!!!";
+        }
+
     }
 
 
